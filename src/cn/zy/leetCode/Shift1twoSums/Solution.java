@@ -1,4 +1,4 @@
-package cn.zy.Shift1twoSums;
+package cn.zy.leetCode.Shift1twoSums;
 
 public class Solution {
     public int[] twoSum(int[] nums, int target) {

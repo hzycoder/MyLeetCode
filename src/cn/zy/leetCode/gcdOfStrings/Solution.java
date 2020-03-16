@@ -1,4 +1,4 @@
-package cn.zy.gcdOfStrings;
+package cn.zy.leetCode.gcdOfStrings;
 
 /**
  * 1071. 字符串的最大公因子

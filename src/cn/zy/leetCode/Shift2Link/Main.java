@@ -1,4 +1,4 @@
-package cn.zy.Shift2Link;
+package cn.zy.leetCode.Shift2Link;
 
 /**
  * create by park.huang@zkteco.com 2020-01-20 15:41

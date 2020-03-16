@@ -1,4 +1,4 @@
-package cn.zy.Shift2Link;
+package cn.zy.leetCode.Shift2Link;
 
 public class ListNode {
     int val;

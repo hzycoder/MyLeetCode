@@ -1,4 +1,4 @@
-package cn.zy.findNumberOfLIS;
+package cn.zy.leetCode.findNumberOfLIS;
 
 /**
  * 673. 最长递增子序列的个数
@@ -28,6 +28,5 @@ public class Solution {
 
         int numberOfLIS = new Solution().findNumberOfLIS(nums);
         System.out.println(numberOfLIS);
-        ;
     }
 }

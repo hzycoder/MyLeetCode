@@ -1,4 +1,4 @@
-package cn.zy.Shift1twoSums;
+package cn.zy.leetCode.Shift1twoSums;
 
 import java.util.Arrays;
 

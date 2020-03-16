@@ -1,6 +1,4 @@
-package cn.zy.Shift2Link;
-
-import com.sun.scenario.effect.impl.state.LinearConvolveKernel;
+package cn.zy.leetCode.Shift2Link;
 
 /**
  * Definition for singly-linked list.
