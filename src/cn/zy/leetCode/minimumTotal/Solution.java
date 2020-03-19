@@ -1,13 +1,12 @@
 package cn.zy.leetCode.minimumTotal;
 
 import com.google.common.collect.Lists;
-import com.sun.org.apache.xerces.internal.impl.xs.XSAttributeGroupDecl;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * TODO UNSOLVED
+ * SOLVED
  * 120. 三角形最小路径和
  * https://leetcode-cn.com/problems/triangle/
  * create by park.huang 2020/03/16
@@ -72,21 +71,61 @@ public class Solution {
 //        return total;
 //    }
 
-    int row;
-    public int minimumTotal(List<List<Integer>> triangle) {
-        row=triangle.size();
-        return helper(0,0, triangle);
-    }
-    private int helper(int level, int c, List<List<Integer>> triangle){
-         System.out.println("helper: level="+ level+ " c=" + c);
-        if (level==row-1){
-            return triangle.get(level).get(c);
-        }
-        int left = helper(level+1, c, triangle);
-        int right = helper(level+1, c+1, triangle);
-        return Math.min(left, right) + triangle.get(level).get(c);
-    }
+    /**
+     * 递归，自顶向下 【超时】
+     * https://leetcode-cn.com/problems/triangle/solution/di-gui-ji-yi-hua-sou-suo-zai-dao-dp-by-crsm/
+     * copy from Elon 2020/03/19
+    **/
+//    int row;
+//    public int minimumTotal(List<List<Integer>> triangle) {
+//        row=triangle.size();
+//        return helper(0,0, triangle);
+//    }
+//    private int helper(int level, int c, List<List<Integer>> triangle){
+//         System.out.println("helper: level="+ level+ " c=" + c);
+//        if (level==row-1){
+//            return triangle.get(level).get(c);
+//        }
+//        int left = helper(level+1, c, triangle);
+//        int right = helper(level+1, c+1, triangle);
+//        return Math.min(left, right) + triangle.get(level).get(c);
+//    }
 
+
+    /**
+     * DP
+     * 自底向上
+     * reference: https://leetcode-cn.com/problems/triangle/solution/man-hua-jue-dui-neng-kan-de-dong-de-dong-tai-gui-h/
+     * create by park.huang 2020/03/19
+    **/
+    public int minimumTotal(List<List<Integer>> triangle) {
+        if (triangle.size() == 0) {
+            return 0;
+        }
+        if (triangle.size() == 1) {
+            return triangle.get(0).get(0);
+        }
+        int dp[][] = new int[triangle.size()][triangle.get(triangle.size()-1).size()];
+        dp[0][0] = triangle.get(0).get(0);
+        for (int i = 1; i < triangle.size(); i++) {
+            for (int j = 0; j < triangle.get(i).size(); j++) {
+                if (j == triangle.get(i).size() - 1) {
+                    dp[i][j] = dp[i - 1][j - 1] + triangle.get(i).get(j);
+                    continue;
+                } else if (j == 0) {
+                    dp[i][j] = dp[i - 1][j] + triangle.get(i).get(j);
+                    continue;
+                }
+                dp[i][j] = Math.min(dp[i - 1][j], dp[i - 1][j - 1]) + triangle.get(i).get(j);
+            }
+        }
+        int[] ints = dp[triangle.size() - 1];
+        int min = ints[0];
+        for (int i = 1; i < ints.length; i++) {
+            min = Math.min(min, ints[i]);
+        }
+        return min;
+    }
 
 
     public static void main(String[] args) {
