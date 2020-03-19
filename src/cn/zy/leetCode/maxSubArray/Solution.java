@@ -1,10 +1,6 @@
 package cn.zy.leetCode.maxSubArray;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
- * TODO UNSOLVED
  * 53. 最大子序和
  * https://leetcode-cn.com/problems/maximum-subarray/
  * create by park.huang 2020/03/17
@@ -19,39 +15,18 @@ public class Solution {
         if (nums.length == 1) {
             return nums[0];
         }
-        Map<Integer, Map<Integer, Integer>> map = new HashMap<>();
-        int sum = 0;
-        int big = nums[0];
-        Map<Integer, Integer> tempMap;
-        for (int start = 0; start < nums.length; start++) {
-            for (int length = 1; length <= nums.length - start; length++) {
-                sum = 0;
-                if (map.containsKey(start) && map.get(start).containsKey(length-1)) {
-                    int b = map.get(start).get(length - 1);
-                    int num = nums[start + length - 1];
-                    tempMap = new HashMap<>();
-                    tempMap.put(length, b + num);
-                    big = Math.max(big,  b + num);
-                    map.put(start, tempMap);
-                    break;
-                }
-                sum = getCount(start, length, nums);
-                tempMap = new HashMap<>();
-                tempMap.put(length, sum);
-                big = Math.max(big, sum);
-                map.put(start, tempMap);
+        int max = nums[0];
+        int best = nums[0];
+        for (int i = 1; i < nums.length; i++) {
+            best = best + nums[i];
+            best = Math.max(best, nums[i]);
+            if (max < best) {
+                max = best;
             }
         }
-        return Math.max(big, sum);
+        return max;
     }
 
-    public int getCount(int start, int length, int[] nums) {
-        int count = 0;
-        for (int i = start; i < length+start; i++) {
-            count += nums[i];
-        }
-        return count;
-    }
 
 //    /**
 //     * 超出规定时间
