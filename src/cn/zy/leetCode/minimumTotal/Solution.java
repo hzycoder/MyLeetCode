@@ -105,7 +105,7 @@ public class Solution {
         if (triangle.size() == 1) {
             return triangle.get(0).get(0);
         }
-        int dp[][] = new int[triangle.size()][triangle.get(triangle.size() - 1).size()];
+        int[][] dp = new int[triangle.size()][triangle.get(triangle.size() - 1).size()];
         dp[0][0] = triangle.get(0).get(0);
         for (int i = 1; i < triangle.size(); i++) {
             for (int j = 0; j < triangle.get(i).size(); j++) {
