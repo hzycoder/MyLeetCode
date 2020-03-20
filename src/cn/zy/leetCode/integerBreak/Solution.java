@@ -19,7 +19,9 @@ public class Solution {
         dp[3] = 2;
         for (int i = 4; i <= n; i++) {
             for (int j = 1; j < i; j++) {
-                dp[i] = Math.max(dp[i], Math.max(dp[j] * dp[i - j], Math.max((i - j) * j, dp[j] * (i - j))));
+                dp[i] = Math.max(dp[i],
+                        Math.max(dp[j] * dp[i - j],     // 计算dp[j] * dp[i-j]
+                                Math.max((i - j) * j, dp[j] * (i - j))));   // 计算 (i-j) * j  和  dp[j] * (i-j)
             }
         }
         return dp[n];
