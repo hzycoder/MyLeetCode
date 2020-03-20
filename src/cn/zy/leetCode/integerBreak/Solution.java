@@ -7,6 +7,11 @@ package cn.zy.leetCode.integerBreak;
  * create by park.huang 2020/03/20
  **/
 public class Solution {
+    /**
+     * dp 自底向上
+     * reference： https://leetcode-cn.com/problems/integer-break/solution/man-hua-hao-ge-chu-pin-bi-shu-jing-pin-jia-qun-de-/
+     * create by park.huang 2020/03/20
+     **/
     public int integerBreak(int n) {
         if (n < 2) {
             return 0;
