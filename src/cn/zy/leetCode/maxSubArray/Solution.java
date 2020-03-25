@@ -1,30 +1,55 @@
 package cn.zy.leetCode.maxSubArray;
 
 /**
+ * SOLVED
  * 53. 最大子序和
  * https://leetcode-cn.com/problems/maximum-subarray/
+ *
+ * 面试题 16.17. 连续数列
+ * https://leetcode-cn.com/problems/contiguous-sequence-lcci/
  * create by park.huang 2020/03/17
  **/
 public class Solution {
 
 
+//    /**
+//     * create by park.huang 2020/03/18
+//     **/
+//    public int maxSubArray(int[] nums) {
+//        if (nums.length == 1) {
+//            return nums[0];
+//        }
+//        int max = nums[0];
+//        int best = nums[0];
+//        for (int i = 1; i < nums.length; i++) {
+//            best = best + nums[i];
+//            best = Math.max(best, nums[i]);
+//            if (max < best) {
+//                max = best;
+//            }
+//        }
+//        return max;
+//    }
+
     /**
-     * create by park.huang 2020/03/18
+     * dp 自底向上
+     * create by park.huang 2020/03/25
      **/
     public int maxSubArray(int[] nums) {
-        if (nums.length == 1) {
+        if (nums.length < 1) {
+            return 0;
+        }
+        if (nums.length < 2) {
             return nums[0];
         }
-        int max = nums[0];
+        int dp[] = new int[nums.length];
+        dp[0] = nums[0];
         int best = nums[0];
         for (int i = 1; i < nums.length; i++) {
-            best = best + nums[i];
-            best = Math.max(best, nums[i]);
-            if (max < best) {
-                max = best;
-            }
+            dp[i] = Math.max(dp[i - 1] + nums[i], nums[i]);
+            best = Math.max(dp[i], best);
         }
-        return max;
+        return best;
     }
 
 
