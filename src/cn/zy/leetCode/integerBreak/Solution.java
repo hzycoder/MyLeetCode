@@ -4,6 +4,7 @@ package cn.zy.leetCode.integerBreak;
  * SOLVED
  * 343. 整数拆分
  * https://leetcode-cn.com/problems/integer-break/
+ * @see cn.zy.leetCode.cuttingRope.Solution  剪绳子
  * create by park.huang 2020/03/20
  **/
 public class Solution {
